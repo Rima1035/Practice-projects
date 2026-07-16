@@ -4,6 +4,32 @@
         tie: 0,
       };
       
+     
+      document.body.addEventListener('keydown', (event) => {
+       if(event.key === 'r'){
+        playgame('rock');
+       }
+       else if(event.key === 'p'){
+        playgame('paper');
+       }
+       else if(event.key === 's'){
+        playgame('scissors');
+       }
+       else if(event.key === 'a'){
+        Autoplay();
+       }
+       else if(event.key === 'Enter'){
+        resetscore();
+       }
+      });
+
+     function resetscore(){
+      score.win = 0;
+      score.loss = 0;
+      score.tie = 0;
+        updatescore();
+     }
+
       function playgame(game) {
         const ComputerMove = pickComputerMove();
         let result = "";
@@ -53,6 +79,8 @@
        document.querySelector('.js-score').innerHTML = `the score is win = ${score.win}, loss = ${score.loss}, tie = ${score.tie}`;
          
        };
+
+
        
        // console.log(
         //   `you picked ${game}. computer picked ${ComputerMove}. you ${result}. the score is win = ${score.win} loss = ${score.loss} tie = ${score.tie}`,
@@ -72,3 +100,29 @@
         }
         return ComputerMove;
       };
+
+      // function Autoplay(){
+      //  setInterval(function(){
+      //   const move = pickComputerMove();
+      //   playgame(move);     
+      //  }, 3000);
+
+     
+
+      let check = false;
+      let Intervalid;
+       function Autoplay(){
+        if(!check){
+       Intervalid = setInterval(function(){
+        const move = pickComputerMove();
+         playgame(move);
+       }, 300);
+       check = true;
+       document.querySelector('.js-autoplay').innerHTML = 'Stop autoplay';
+      }
+      else{
+        clearInterval(Intervalid);
+        document.querySelector('.js-autoplay').innerHTML = 'Auto play';
+        check = false;
+      }
+       }
