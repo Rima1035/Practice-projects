@@ -1,3 +1,9 @@
+const but = document.querySelector('.js-submitbutton');
+
+but.addEventListener('click', () => {
+  Enterdata();
+});
+ 
  let finalarray = [];
         function Enterdata(){
          const inputfield = document.querySelector('.js-inputfield');
