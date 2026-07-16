@@ -2,35 +2,27 @@
 <html>
   <head>
     <title>Rock Paper and Scissor project in javascript</title>
-    <link rel="stylesheet" src="rock paper scissor project.css">
+    <link rel="stylesheet" href="rock paper scissor project.css">
   </head>
 
   <body>
     <h3>Rock Paper Scissor game with computer</h3>
     <p>
-      <button class="element-button"
-      onclick="playgame('rock')"><img src="image/rock-emoji.png" height="50px" /></button>
+      <button class="element-button js-rockbutton"><img src="image/rock-emoji.png" height="50px" /></button>
 
-      <button class="element-button"
-      onclick="playgame('paper')"><img src="image/paper-emoji.png" height="50px"/></button>
+      <button class="element-button js-paperbutton"><img src="image/paper-emoji.png" height="50px"/></button>
 
-      <button class="element-button"
-      onclick="playgame('scissors')"><img src="image/scissors-emoji.png" height="50px"/></button>
+      <button class="element-button  js-scissorbutton"><img src="image/scissors-emoji.png" height="50px"/></button>
 
       <p class="js-result css-result"></p>
       <p class="js-move css-move"></p>
      
       <p class="js-score css-score1"></p>
-      <button class="css-score"
-        onclick="
-          score.win = 0;
-          score.loss = 0;
-          score.tie = 0;
-           updatescore();
-        "
-      >
+      <button class="css-score">
         Reset score
       </button> 
+
+      <button class="js-autoplay css-autoplay">Auto play</button>
     </p>
     <script src="rock paper scissor project.js"></script>
 
