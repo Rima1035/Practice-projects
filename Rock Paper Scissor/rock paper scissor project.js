@@ -4,7 +4,7 @@
         tie: 0,
       };
       
-     
+
       document.body.addEventListener('keydown', (event) => {
        if(event.key === 'r'){
         playgame('rock');
@@ -18,17 +18,36 @@
        else if(event.key === 'a'){
         Autoplay();
        }
-       else if(event.key === 'Enter'){
-        resetscore();
-       }
       });
 
      function resetscore(){
-      score.win = 0;
-      score.loss = 0;
-      score.tie = 0;
-        updatescore();
+     document.querySelector('.js-conformation').innerHTML = 
+     ` <p>Are you sure you want to reset the score?</p>
+
+    <button onclick="confirmReset()">
+      Yes
+    </button>
+
+    <button onclick="cancelReset()">
+      No
+    </button>`
      }
+   function confirmReset() {
+  score.win = 0;
+  score.loss = 0;
+  score.tie = 0;
+
+  updatescore();
+
+   document.querySelector('.js-move').innerHTML = '';
+    document.querySelector('.js-result').innerHTML = '';
+  document.querySelector('.js-conformation').innerHTML = '';
+}
+    function cancelReset(){
+ document.querySelector('.js-conformation').innerHTML = '';
+  document.querySelector('.js-move').innerHTML = '';
+    document.querySelector('.js-result').innerHTML = '';
+    }
 
       function playgame(game) {
         const ComputerMove = pickComputerMove();
@@ -106,8 +125,6 @@
       //   const move = pickComputerMove();
       //   playgame(move);     
       //  }, 3000);
-
-     
 
       let check = false;
       let Intervalid;
