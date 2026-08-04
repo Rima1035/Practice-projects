@@ -1,0 +1,227 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.navbar{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+   padding: 5px 30px;
+}
+.first-nav{
+  width: 100px;
+}
+.amazon-img{
+  width: 100%;
+}
+.second-nav{
+  padding: 12px 12px;
+  font-size: 25px;
+  font-family:  Arial, sans-serif;
+  font-weight: bold;
+}
+.items{
+      color: rgb(0, 113, 133);
+      text-decoration: none;
+}
+.main-content{
+  max-width: 1300px;
+  width: 100%;
+ margin: auto;
+ padding: 70px 100px;
+}
+.page-title{
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  display: inline-block;
+}
+.product-grid{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  height: auto;
+  gap: 2px;
+  gap: 15px;
+  align-items: start;
+
+}
+.products-grid-items{
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+}
+.product-items{
+  border: 1px solid rgb(231, 231, 231);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 15px 15px;
+}
+.product-items-section1{
+  font-size: 20px;
+  color: rgb(0, 118, 0);
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+}
+.product-items-section2{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+.product-item-img img{
+  width: 180px;
+  padding-right: 25px;
+}
+.product-item-details{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+}
+.product-items-text{
+  font-weight: bold;
+  width: 255px;
+}
+.product-items-values{
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+.product-items-price{
+   color: rgb(177, 39, 4);
+   font-weight: bold;
+}
+.update{
+  color: rgb(1, 124, 182);
+  cursor: pointer;
+}
+.Delete{
+  color: rgb(1, 124, 182);
+  cursor: pointer;
+}
+.update:hover{
+  color: rgb(196, 80, 0);
+  cursor: pointer;
+}
+.Delete:hover{
+  color: rgb(196, 80,0);
+  cursor: pointer;
+}
+.shipping-days{
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  font-family: Arial, sans-serif;
+}
+.shipping-days input[type="radio"]{
+   transform: scale(1.4);
+   cursor: pointer;
+}
+.delivery-option{
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+}
+.delivery-price{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 15px;
+}
+.day{
+  color: rgb(0, 118, 0);
+}
+.deliver-heading{
+  font-weight: bold;
+  font-size: 18px;
+}
+.price{
+      color: rgb(120, 120, 120);
+      font-size: 15px;
+}
+.order-summary{
+  border: 1px solid rgb(231, 231, 231);
+  border-radius: 5px;
+  padding: 25px;
+  margin-top: 25px;
+  
+}
+.order-details{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-family:Arial, sans-serif;
+}
+.order-text{
+  font-weight: bold;
+  font-size: 20px;
+}
+.order-shipping-details{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+ 
+}
+.items-values{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.shipping-details{
+   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.including-tax{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.tax{
+  display: flex;
+  justify-content: space-between;
+}
+.before-tax{
+  padding-top: 15px; 
+}
+.tax-values{
+  display: flex;
+  justify-content: space-between;
+}
+.tax-price1{
+  border-top: 1px solid rgb(222, 222, 222);
+  padding-top: 15px;
+}
+.Total{
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  font-family: Arial, sans-serif;
+  color:rgb(177, 39, 4);
+  border-top: 1px solid  rgb(222, 222, 222);
+  padding-top: 25px;
+  margin-top: 15px;
+  font-weight: bold;
+}
+.place-your-order{
+  background-color: #FFD814;
+  border: none;
+  border-radius: 5px;
+  padding: 12px;
+  margin-top: 20px;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+}
+.place-your-order:hover{
+  background-color: rgb(247, 202, 0);
+}
