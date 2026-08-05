@@ -15,6 +15,7 @@
   align-items: center;
   flex-shrink: 0;
   font-family:  Arial, sans-serif;
+  position: fixed;
 }
 .first-section{
   border-radius: 3px;
@@ -24,7 +25,7 @@
   padding: 8px 10px;
   border: 1px solid transparent;
   transition: border-color 0.3s ease;
-  
+  cursor: pointer;
 }
 .first-section:hover{
   border-color: white;
@@ -146,7 +147,7 @@ padding:8px 15px;
 @media(max-width:1600px){
    .main-product{
 display: grid;
-grid-template-columns: repeat(7, 1fr);
+grid-template-columns: repeat(6, 1fr);
 }
 }
 .product{
@@ -154,15 +155,19 @@ grid-template-columns: repeat(7, 1fr);
     border-bottom: 1px solid rgb(231, 231, 231);
     display: flex;
     flex-direction: column;
-    padding-top: 45px;
+    padding-top: 100px;
     padding-left: 30px;
     padding-right: 30px;
     padding-bottom: 22px; 
     font-family:  Arial, sans-serif;
 }
 .socks{
+  width: 100%;
+  max-width: 220px;
   height: 180px;
- 
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
   padding-bottom: 15px;
 }
 .product-text{
