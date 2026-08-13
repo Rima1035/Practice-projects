@@ -1,5 +1,7 @@
 
  import {Cart} from '../Data/cart.js';
+ import {products} from '../Data/products.js';
+
 let productHtml = '';
 
 products.forEach((product) => {
@@ -34,7 +36,10 @@ products.forEach((product) => {
           </div>
           <button class="add-to-cart js-add-to-cart" 
           data-product-id="${product.id}"
-          data-product-name="${product.name}">Add to Cart</button>
+          data-product-name="${product.name}"
+          data-product-image="${product.image}"
+          data-product-price="${product.priceCents}"
+          >Add to Cart</button>
         </div>`
 } ) ;
  
@@ -44,13 +49,15 @@ document.querySelectorAll('.js-add-to-cart').forEach(button => {
   button.addEventListener('click', () => {
        const productID  = button.dataset.productId;
        const productNAME = button.dataset.productName;
+       const productImage = button.dataset.productImage;
+       const productPrice = Number(button.dataset.productPrice)/100;
        const productselect = button.parentElement; //this productselect constain all the parent elements of the button to access the specific class. 
        const selectOption = productselect.querySelector('.js-quantity-selector');
        const Qu = Number(selectOption.value);
 //this is the code for finding if there are any same elements or not and if not the increase the quantity and also if there is then increase just the quantity 
        let Matchingitem;
        Cart.forEach(item => {
-        if(productID === item.ID){
+        if(productID === item.iD){
          Matchingitem = item;
         }
        });
@@ -60,11 +67,14 @@ document.querySelectorAll('.js-add-to-cart').forEach(button => {
        }
        else{
          Cart.push({
-        ID : productID,
+        iD : productID,
         Name : productNAME,
-        Quantity : Qu
+        Quantity : Qu, 
+        Image: productImage, 
+        Price : productPrice
        });
        }
+       localStorage.setItem('cart', JSON.stringify(Cart));
       let cartquantity = 0;
       Cart.forEach(item => {
         cartquantity += item.Quantity;
@@ -83,7 +93,7 @@ document.querySelector('.js-cartquantity').innerHTML = cartquantity;
         productselect.querySelector('.js-added2').innerHTML = '';
        },1000);
        
-       console.log(Cart);
+      
   })
 })
 
