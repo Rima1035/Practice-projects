@@ -15,6 +15,7 @@
   align-items: center;
   flex-shrink: 0;
   font-family:  Arial, sans-serif;
+  position: fixed;
 }
 .first-section{
   border-radius: 3px;
@@ -116,14 +117,14 @@
   color: white;
 }
 .last-section-second img{
-  width: 65px;
+  width: 50px;
 }
 .cart-quantity{
   position: relative;
-  right: 32px;
+  right: 30px;
   bottom: 10px;
   color: orange;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
 }
 .cart{
@@ -146,7 +147,8 @@ padding:8px 15px;
 @media(max-width:1600px){
    .main-product{
 display: grid;
-grid-template-columns: repeat(7, 1fr);
+grid-template-columns: repeat(6, 1fr);
+padding-top: 87px;
 }
 }
 .product{
@@ -154,15 +156,19 @@ grid-template-columns: repeat(7, 1fr);
     border-bottom: 1px solid rgb(231, 231, 231);
     display: flex;
     flex-direction: column;
-    padding-top: 45px;
+    padding-top: 25px;
     padding-left: 30px;
     padding-right: 30px;
     padding-bottom: 22px; 
     font-family:  Arial, sans-serif;
 }
 .socks{
+  width: 100%;
+  max-width: 220px;
   height: 180px;
- 
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
   padding-bottom: 15px;
 }
 .product-text{
@@ -190,7 +196,7 @@ grid-template-columns: repeat(7, 1fr);
   font-weight: bold;
 }
 .quantity{
-margin-bottom: 15px;
+margin-bottom: 35px;
 }
  select{
   border-radius: 7px;
@@ -204,7 +210,7 @@ select:focus{
   border: 1px solid orange;
 }
 .add-to-cart{
-  margin-top: 20px;
+  margin-top: auto;
   border: 2px;
   padding: 8px;
   border-radius: 15px;
@@ -212,6 +218,19 @@ select:focus{
   align-items: center;
   justify-content: center;
   background-color: rgb(255, 216, 20);
-  border-color: rgb(252, 210, 0);
+  border:1px solid rgb(252, 210, 0);
   cursor: pointer;
+}
+.add-to-cart:hover{
+  background-color: rgb(247,202,0);
+  border: 1px solid rgb(242, 194, 0);
+}
+.css-added img{
+  width: 18px;
+}
+.css-added{
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: flex-start;
 }
