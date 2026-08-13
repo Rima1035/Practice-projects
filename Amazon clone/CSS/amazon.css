@@ -225,6 +225,7 @@ select:focus{
   background-color: rgb(247,202,0);
   border: 1px solid rgb(242, 194, 0);
 }
+
 .css-added img{
   width: 18px;
 }
@@ -234,3 +235,4 @@ select:focus{
   align-items: center;
   justify-content: flex-start;
 }
+

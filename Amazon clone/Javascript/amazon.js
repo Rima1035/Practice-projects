@@ -1,3 +1,4 @@
+
  import {Cart} from '../Data/cart.js';
 let productHtml = '';
 
@@ -86,3 +87,5 @@ document.querySelector('.js-cartquantity').innerHTML = cartquantity;
   })
 })
 
+
+ 
