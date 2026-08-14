@@ -1,5 +1,7 @@
 import {Cart} from '../Data/cart.js';
 
+
+
 const savedCart = localStorage.getItem('cart');
 const checkoutCart = JSON.parse(savedCart);
 
@@ -80,6 +82,12 @@ document.querySelectorAll('.js-delete').forEach(deletebutton => {
     localStorage.setItem('cart', JSON.stringify(checkoutCart));
     const productElement = deletebutton.closest('.js-product-items');
     productElement.remove();
-   console.log(checkoutCart);
   })
 }) 
+
+let cartvalues = 0;
+checkoutCart.forEach(cartval=> {
+ cartvalues += cartval.Quantity;
+});
+
+document.querySelector('.js-checkoutquantity').innerHTML =  `Checkout(<a class="items" href="amazon.html">${cartvalues} items</a>)`;
