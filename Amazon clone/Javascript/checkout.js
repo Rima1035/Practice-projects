@@ -7,7 +7,7 @@ let checkout = '';
 
 checkoutCart.forEach((cartitems)=> {
   checkout += `
-      <div class="product-items  js-product-items">
+      <div class="product-items  js-product-items js-delete-items ">
             <div class="product-items-section1">
               Delivery date: Tuesday, June 21
             </div>
@@ -73,6 +73,13 @@ document.querySelectorAll('.js-delete').forEach(deletebutton => {
           return true;
         }
     });
-   console.log(finalproductsummary);
+    checkoutCart.length = 0;
+    checkoutCart.push(...finalproductsummary);
+
+    // Save the updated Cart
+    localStorage.setItem('cart', JSON.stringify(checkoutCart));
+    const productElement = deletebutton.closest('.js-product-items');
+    productElement.remove();
+   console.log(checkoutCart);
   })
 }) 
