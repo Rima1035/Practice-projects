@@ -22,24 +22,25 @@ checkoutCart.forEach((cartitems)=> {
                 <div class="product-items-text">
                  ${cartitems.Name}
                 </div>
-                <div class="product-items-price">$${cartitems.Price}</div>
+                <div class="product-items-price">$${(cartitems.Price).toFixed(2)}</div>
                 <div class="product-items-values">
-                  ${cartitems.Quantity}
+                  Quantity: ${cartitems.Quantity}
                   <div class="update">Update</div>
-                  <div class="Delete">Delete</div>
+                  <div class="Delete js-delete"
+                  data-product-id="${cartitems.iD}">Delete</div>
                 </div>
               </div>
               <div class="delivery-option">
                 <div class="deliver-heading">Choose a delivery option:</div>
                 <div class="shipping-days">
-                  <input type="radio" name="delivery-option" />
+                  <input type="radio" name="delivery-option${cartitems.iD}" />
                   <div class="delivery-price">
                     <div class="day">Tuesday, June 21</div>
                     <div class="price">FREE Shipping</div>
                   </div>
                 </div>
                 <div class="shipping-days">
-                  <input type="radio" name="delivery-option" />
+                  <input type="radio" name="delivery-option${cartitems.iD}" />
                   <div class="delivery-price">
                     <div class="day">Wednesday, June 15</div>
                     <div class="price">$4.99 - Shipping</div>
@@ -47,7 +48,7 @@ checkoutCart.forEach((cartitems)=> {
                 </div>
 
                 <div class="shipping-days">
-                  <input type="radio" name="delivery-option" />
+                  <input type="radio" name="delivery-option${cartitems.iD}" />
                   <div class="delivery-price">
                     <div class="day">Monday, June 13</div>
                     <div class="price">$9.99 - Shipping</div>
@@ -59,3 +60,19 @@ checkoutCart.forEach((cartitems)=> {
 }); 
 
 document.querySelector('.js-product-items').innerHTML = checkout;
+
+
+document.querySelectorAll('.js-delete').forEach(deletebutton => {
+  deletebutton.addEventListener('click', ()=>{
+    const productId = deletebutton.dataset.productId;
+    const finalproductsummary = checkoutCart.filter(function(deletevalue){
+        if(productId === deletevalue.iD){
+          return false;
+        }
+        else{
+          return true;
+        }
+    });
+   console.log(finalproductsummary);
+  })
+}) 
