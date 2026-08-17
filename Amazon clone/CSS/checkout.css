@@ -63,6 +63,7 @@
   padding: 15px 15px;
 }
 .product-items-section1{
+   
   font-size: 20px;
   color: rgb(0, 118, 0);
   font-family: Arial, sans-serif;
@@ -139,6 +140,7 @@
 }
 .day{
   color: rgb(0, 118, 0);
+  font-weight: bold;
 }
 .deliver-heading{
   font-weight: bold;

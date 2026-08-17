@@ -1,4 +1,12 @@
 import {Cart} from '../Data/cart.js';
+import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
+
+
+console.log(dayjs());
+const today = dayjs();
+const deliverydates = today.add(7, 'days');
+const updateddeliverydate = deliverydates.format('dddd, MMMM D');
+
 
 
 
@@ -11,7 +19,7 @@ checkoutCart.forEach((cartitems)=> {
   checkout += `
       <div class="product-items  js-product-items js-delete-items ">
             <div class="product-items-section1">
-              Delivery date: Tuesday, June 21
+              Delivery date: ${updateddeliverydate}
             </div>
             <div class="product-items-section2">
               <div class="product-item-img">
@@ -63,7 +71,7 @@ checkoutCart.forEach((cartitems)=> {
 
 document.querySelector('.js-product-items').innerHTML = checkout;
 
-
+// this is the code for the delete button  
 document.querySelectorAll('.js-delete').forEach(deletebutton => {
   deletebutton.addEventListener('click', ()=>{
     const productId = deletebutton.dataset.productId;
@@ -84,10 +92,10 @@ document.querySelectorAll('.js-delete').forEach(deletebutton => {
     productElement.remove();
   })
 }) 
-
+// this is the code for the checkout quantity values.
 let cartvalues = 0;
 checkoutCart.forEach(cartval=> {
  cartvalues += cartval.Quantity;
 });
 
-document.querySelector('.js-checkoutquantity').innerHTML =  `Checkout(<a class="items" href="amazon.html">${cartvalues} items</a>)`;
+document.querySelector('.js-checkoutquantity').innerHTML = `Checkout(<a class="items" href="amazon.html">${cartvalues} items</a>)`;
