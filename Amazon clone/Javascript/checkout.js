@@ -1,14 +1,9 @@
 import {Cart} from '../Data/cart.js';
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
+import {deliveryOption} from '../Data/deliveryOptions.js';
 
-
-console.log(dayjs());
 const today = dayjs();
-const deliverydates = today.add(7, 'days');
-const updateddeliverydate = deliverydates.format('dddd, MMMM D');
-
-
-
+const updatedates = today.format('DD MM YYYY');
 
 const savedCart = localStorage.getItem('cart');
 const checkoutCart = JSON.parse(savedCart);
@@ -19,7 +14,7 @@ checkoutCart.forEach((cartitems)=> {
   checkout += `
       <div class="product-items  js-product-items js-delete-items ">
             <div class="product-items-section1">
-              Delivery date: ${updateddeliverydate}
+              Delivery date: 
             </div>
             <div class="product-items-section2">
               <div class="product-item-img">
@@ -43,14 +38,14 @@ checkoutCart.forEach((cartitems)=> {
               <div class="delivery-option">
                 <div class="deliver-heading">Choose a delivery option:</div>
                 <div class="shipping-days">
-                  <input type="radio" name="delivery-option${cartitems.iD}" />
+                  <input type="radio" name="delivery-option${cartitems.iD}" class="delivery-option-radiobutton" data-delivery-id="1"/>
                   <div class="delivery-price">
                     <div class="day">Tuesday, June 21</div>
                     <div class="price">FREE Shipping</div>
                   </div>
                 </div>
                 <div class="shipping-days">
-                  <input type="radio" name="delivery-option${cartitems.iD}" />
+                  <input type="radio" name="delivery-option${cartitems.iD}"  class="delivery-option-radiobutton" data-delivery-id="2"/>
                   <div class="delivery-price">
                     <div class="day">Wednesday, June 15</div>
                     <div class="price">$4.99 - Shipping</div>
@@ -58,7 +53,7 @@ checkoutCart.forEach((cartitems)=> {
                 </div>
 
                 <div class="shipping-days">
-                  <input type="radio" name="delivery-option${cartitems.iD}" />
+                  <input type="radio" name="delivery-option${cartitems.iD}" class="delivery-option-radiobutton" data-delivery-id="3"/>
                   <div class="delivery-price">
                     <div class="day">Monday, June 13</div>
                     <div class="price">$9.99 - Shipping</div>
@@ -99,3 +94,17 @@ checkoutCart.forEach(cartval=> {
 });
 
 document.querySelector('.js-checkoutquantity').innerHTML = `Checkout(<a class="items" href="amazon.html">${cartvalues} items</a>)`;
+ 
+const addingdeliveryoptions = '';
+//Here this code is for the update in delivery dates
+document.querySelectorAll('.delivery-option-radiobutton').forEach(radiobutton => {
+  radiobutton.addEventListener('click', () => {
+    const radiobuttonId = radiobutton.dataset.deliveryId;
+   deliveryOption.forEach(deliveryid => {
+    if(radiobuttonId === deliveryid.id){
+      const deliverydays = today.add(deliveryid.deliveryDays, 'days');
+      const formatedates = deliverydays.format('dddd MMMM D');
+    }
+   })
+  });
+});

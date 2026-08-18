@@ -91,9 +91,7 @@ document.querySelector('.js-cartquantity').innerHTML = cartquantity;
 
          setTimeout(function(){
         productselect.querySelector('.js-added2').innerHTML = '';
-       },1000);
-       
-      
+       },1000);  
   })
 })
 
