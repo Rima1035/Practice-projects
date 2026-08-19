@@ -107,3 +107,11 @@ document.querySelectorAll('.delivery-option-radiobutton').forEach(radiobutton =>
    })
   });
 });
+
+console.log(checkoutCart);
+let itemstotal = 0;
+checkoutCart.forEach(orderSummary => {
+    const totalcost = orderSummary.Price * orderSummary.Quantity;
+    itemstotal += totalcost;
+});
+console.log(itemstotal.toFixed(2));
