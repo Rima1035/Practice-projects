@@ -107,5 +107,3 @@ document.querySelectorAll('.delivery-option-radiobutton').forEach(radiobutton =>
    })
   });
 });
-
-
