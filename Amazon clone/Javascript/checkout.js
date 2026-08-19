@@ -92,11 +92,11 @@ checkoutCart.forEach(cartval=> {
 
 document.querySelector('.js-checkoutquantity').innerHTML = `Checkout(<a class="items" href="amazon.html">${cartvalues} items</a>)`;
  
-
+let radiobuttonId;
 //Here this code is for the update in delivery dates
 document.querySelectorAll('.delivery-option-radiobutton').forEach(radiobutton => {
   radiobutton.addEventListener('click', () => {
-    const radiobuttonId = radiobutton.dataset.deliveryId;
+    radiobuttonId = radiobutton.dataset.deliveryId;
    deliveryOption.forEach(deliveryid => {
     if(radiobuttonId === deliveryid.id){
       const deliverydays = today.add(deliveryid.deliveryDays, 'days');
@@ -110,8 +110,12 @@ document.querySelectorAll('.delivery-option-radiobutton').forEach(radiobutton =>
 
 console.log(checkoutCart);
 let itemstotal = 0;
+let Shippingtotal = 0;
 checkoutCart.forEach(orderSummary => {
     const totalcost = orderSummary.Price * orderSummary.Quantity;
     itemstotal += totalcost;
 });
 console.log(itemstotal.toFixed(2));
+ console.log(Shippingtotal);
+
+
