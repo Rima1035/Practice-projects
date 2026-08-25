@@ -123,4 +123,10 @@
     itemstotal += totalcost;
   });
   console.log(itemstotal.toFixed(2));
-  console.log(Shippingtotal);
+  //making the shipping & handling interactive 
+  checkoutCart.forEach((shippingdetails)=> {
+  const productId = shippingdetails.iD;
+  const productElement = document.querySelector(
+  `[data-product-id="${productId}"]`
+);
+})
