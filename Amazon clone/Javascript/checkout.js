@@ -29,7 +29,12 @@
       //here we wrote the html in the js and then adding then adding the stored values of changedates and also the price on the webpage.
       deliveryhtml += `  
       <div class="shipping-days">
-                    <input type="radio" name="delivery-option${cartitems.iD}" class="delivery-option-radiobutton" data-delivery-id='${options.id}'/>
+                    <input
+      type="radio"
+      name="delivery-option${cartitems.iD}"
+      class="delivery-option-radiobutton"
+      data-delivery-id="${options.id}"
+    />
                     <div class="delivery-price">
                       <div class="day">${changedates}</div>
                       <div class="price">${price}</div>
@@ -38,7 +43,7 @@
     });
   //here adding the image of the product and also the name + quantity + price from the checkoutcart which is added in the amazon.html page.
     checkout += `
-        <div class="product-items  js-product-items js-delete-items">
+        <div class="product-items  js-product-items js-delete-items" data-product-id="${cartitems.iD}">
               <div class="product-items-section1 js-delivery-dates">Delivery dates : ${updatedates}</div>
               <div class="product-items-section2">
                 <div class="product-item-img">
@@ -115,18 +120,23 @@
       });
     });
 
-  console.log(checkoutCart);
+  //console.log(checkoutCart);
   let itemstotal = 0;
   let Shippingtotal = 0;
+
   checkoutCart.forEach((orderSummary) => {
     const totalcost = orderSummary.Price * orderSummary.Quantity;
     itemstotal += totalcost;
+const productId = orderSummary.iD;
+ const productElement = document.querySelector(
+    `.js-product-items[data-product-id="${productId}"]`
+  );
+ const selectedRadio =
+  productElement.querySelector('.delivery-option-radiobutton:checked');;
+  console.log(selectedRadio);
+ 
   });
   console.log(itemstotal.toFixed(2));
-  //making the shipping & handling interactive 
-  checkoutCart.forEach((shippingdetails)=> {
-  const productId = shippingdetails.iD;
-  const productElement = document.querySelector(
-  `[data-product-id="${productId}"]`
-);
-})
+ 
+
+ 
