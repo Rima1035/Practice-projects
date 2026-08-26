@@ -34,6 +34,7 @@
       name="delivery-option${cartitems.iD}"
       class="delivery-option-radiobutton"
       data-delivery-id="${options.id}"
+      ${options.id === '3' ? 'checked' : ''}
     />
                     <div class="delivery-price">
                       <div class="day">${changedates}</div>
@@ -123,20 +124,27 @@
   //console.log(checkoutCart);
   let itemstotal = 0;
   let Shippingtotal = 0;
-
   checkoutCart.forEach((orderSummary) => {
     const totalcost = orderSummary.Price * orderSummary.Quantity;
     itemstotal += totalcost;
+
+
+    //this is the code for selecting shipping price 
 const productId = orderSummary.iD;
  const productElement = document.querySelector(
     `.js-product-items[data-product-id="${productId}"]`
   );
- const selectedRadio =
-  productElement.querySelector('.delivery-option-radiobutton:checked');;
-  console.log(selectedRadio);
- 
+const RadioOptions = productElement.querySelector('.delivery-option-radiobutton:checked');;
+const selectedradiobutton =  RadioOptions.dataset.deliveryId;
+deliveryOption.forEach((getid) => {
+if(selectedradiobutton === getid.id){
+  const shippingpricevalues = getid.priceCent/100;
+  Shippingtotal += shippingpricevalues;
+}
+})
+
   });
   console.log(itemstotal.toFixed(2));
- 
+ console.log(Shippingtotal.toFixed(2));
 
  
