@@ -1,4 +1,4 @@
-import { Cart } from "../Data/cart.js";
+
 import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
 import { deliveryOption } from "../Data/deliveryOptions.js";
 //here first we are storing the items of cart in the savedCart variable and then adding those values in checkoutCart so our all the data is present in checkoutcart.
