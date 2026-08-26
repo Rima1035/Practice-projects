@@ -123,28 +123,56 @@
 
   //console.log(checkoutCart);
   let itemstotal = 0;
-  let Shippingtotal = 0;
+ 
   checkoutCart.forEach((orderSummary) => {
     const totalcost = orderSummary.Price * orderSummary.Quantity;
     itemstotal += totalcost;
+  });
 
+   //this is the code for selecting shipping price 
+ function calculateShipping() {
+  let Shippingtotal = 0;
 
-    //this is the code for selecting shipping price 
-const productId = orderSummary.iD;
- const productElement = document.querySelector(
-    `.js-product-items[data-product-id="${productId}"]`
-  );
-const RadioOptions = productElement.querySelector('.delivery-option-radiobutton:checked');;
-const selectedradiobutton =  RadioOptions.dataset.deliveryId;
-deliveryOption.forEach((getid) => {
-if(selectedradiobutton === getid.id){
-  const shippingpricevalues = getid.priceCent/100;
-  Shippingtotal += shippingpricevalues;
-}
-})
+  checkoutCart.forEach((orderSummary) => {
+
+    const productId = orderSummary.iD;
+
+    const productElement = document.querySelector(
+      `.js-product-items[data-product-id="${productId}"]`
+    );
+
+    const RadioOptions =
+      productElement.querySelector(
+        ".delivery-option-radiobutton:checked"
+      );
+
+    const selectedradiobutton =
+      Number(RadioOptions.dataset.deliveryId);
+
+    deliveryOption.forEach((getid) => {
+
+      if (selectedradiobutton === Number(getid.id)) {
+
+        const shippingpricevalues =
+          getid.priceCent / 100;
+
+        Shippingtotal += shippingpricevalues;
+      }
+
+    });
 
   });
+
+  return Shippingtotal;
+}
+  
+
+let Shippingtotal = calculateShipping();
+
+console.log(Shippingtotal.toFixed(2));
+
+
   console.log(itemstotal.toFixed(2));
- console.log(Shippingtotal.toFixed(2));
+ 
 
  
