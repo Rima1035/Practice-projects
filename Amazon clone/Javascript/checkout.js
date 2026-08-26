@@ -34,7 +34,7 @@ checkoutCart.forEach((cartitems) => {
       name="delivery-option${cartitems.iD}"
       class="delivery-option-radiobutton"
       data-delivery-id="${options.id}"
-      ${options.id === "3" ? "checked" : ""}
+     ${options.id === "1" ? "checked" : ""}
     />
                     <div class="delivery-price">
                       <div class="day">${changedates}</div>
@@ -161,7 +161,44 @@ function calculateShipping() {
 }
 
 let Shippingtotal = calculateShipping();
+const totalvaluesbeforetax = itemstotal + Shippingtotal;
+const totalaftertax = totalvaluesbeforetax + 477 / 100;
+let orderSummarypagehtml = "";
 
-console.log(Shippingtotal.toFixed(2));
+orderSummarypagehtml += `
+   
+            <div class="order-details">
+              <div class="order-text">Order Summary</div>
+              <div class="order-shipping-details">
+                <div class="items-values">
+                  <span class="item-text">Items (3):</span>
+                  <span class="item-price">$${itemstotal.toFixed(2)}</span>
+                </div>
+                <div class="shipping-details">
+                  <span class="shipping-text">Shipping & handling</span>
+                  <span class="shipping-price">$${Shippingtotal.toFixed(2)}</span>
+                  
+                </div>
+              </div>
+              <div class="including-tax">
+                <div class="tax">
+                 <span class="before-tax">Total before Tax:</span>
+                  <span class="tax-price1">$${totalvaluesbeforetax.toFixed(2)}</span>
+                </div>
+                <div class="tax-values">
+                <span class="Estimated-tax">Estimated tax (10%):</span>
+                  <span class="tax-price">$4.77</span>
+                  </div>
+              </div>
+              </div>
+              <div class="final-total">
+               <div class="Total">Order total:
+              <span class="total-price">$${totalaftertax.toFixed(2)}</span>
+            </div>
+            <button class="place-your-order">Place your order</button>
+            </div>
+            </div>
+          
+`;
 
-console.log(itemstotal.toFixed(2));
+document.querySelector(".order-summary").innerHTML = orderSummarypagehtml;
