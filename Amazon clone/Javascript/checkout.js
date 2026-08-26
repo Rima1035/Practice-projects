@@ -160,10 +160,12 @@ function calculateShipping() {
 
   return Shippingtotal;
 }
+
+//here in this function we are updating the whole cart or the order summary values from static to the dynamic
 function UpdateOrderSummary(){
      const Shippingtotal = calculateShipping();
 const totalvaluesbeforetax = itemstotal + Shippingtotal;
-const tax = totalvaluesbeforetax * 0.10;
+const tax = 477/100;
 const totalaftertax = totalvaluesbeforetax + tax;    
 
  document.querySelector(".js-item-price").innerHTML =
@@ -191,7 +193,7 @@ orderSummarypagehtml += `
               <div class="order-text">Order Summary</div>
               <div class="order-shipping-details">
                 <div class="items-values">
-                  <span class="item-text">Items (3):</span>
+                  <span class="item-text">Items (${cartvalues}):</span>
                   <span class="item-price js-item-price">$0.00</span>
                 </div>
                 <div class="shipping-details">
