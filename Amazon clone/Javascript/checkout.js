@@ -120,6 +120,7 @@ document
             `Delivery dates: ${formatedates}`;
         }
       });
+      UpdateOrderSummary();
     });
   });
 
@@ -159,10 +160,29 @@ function calculateShipping() {
 
   return Shippingtotal;
 }
-
-let Shippingtotal = calculateShipping();
+function UpdateOrderSummary(){
+     const Shippingtotal = calculateShipping();
 const totalvaluesbeforetax = itemstotal + Shippingtotal;
-const totalaftertax = totalvaluesbeforetax + 477 / 100;
+const tax = totalvaluesbeforetax * 0.10;
+const totalaftertax = totalvaluesbeforetax + tax;    
+
+ document.querySelector(".js-item-price").innerHTML =
+    `$${itemstotal.toFixed(2)}`;
+
+  document.querySelector(".js-shipping-price").innerHTML =
+    `$${Shippingtotal.toFixed(2)}`;
+
+  document.querySelector(".js-before-tax").innerHTML =
+    `$${totalvaluesbeforetax.toFixed(2)}`;
+
+  document.querySelector(".js-tax").innerHTML =
+    `$${tax.toFixed(2)}`;
+
+  document.querySelector(".js-order-total").innerHTML =
+    `$${totalaftertax.toFixed(2)}`;
+
+}
+
 let orderSummarypagehtml = "";
 
 orderSummarypagehtml += `
@@ -172,28 +192,28 @@ orderSummarypagehtml += `
               <div class="order-shipping-details">
                 <div class="items-values">
                   <span class="item-text">Items (3):</span>
-                  <span class="item-price">$${itemstotal.toFixed(2)}</span>
+                  <span class="item-price js-item-price">$0.00</span>
                 </div>
                 <div class="shipping-details">
                   <span class="shipping-text">Shipping & handling</span>
-                  <span class="shipping-price">$${Shippingtotal.toFixed(2)}</span>
+                  <span class="shipping-price js-shipping-price">$0.00</span>
                   
                 </div>
               </div>
               <div class="including-tax">
                 <div class="tax">
                  <span class="before-tax">Total before Tax:</span>
-                  <span class="tax-price1">$${totalvaluesbeforetax.toFixed(2)}</span>
+                   <span class="tax-price1 js-before-tax">$0.00</span> 
                 </div>
                 <div class="tax-values">
                 <span class="Estimated-tax">Estimated tax (10%):</span>
-                  <span class="tax-price">$4.77</span>
+                   <span class="tax-price js-tax">$0.00</span> 
                   </div>
               </div>
               </div>
               <div class="final-total">
                <div class="Total">Order total:
-              <span class="total-price">$${totalaftertax.toFixed(2)}</span>
+                 <span class="total-price js-order-total">$0.00</span> 
             </div>
             <button class="place-your-order">Place your order</button>
             </div>
@@ -202,3 +222,5 @@ orderSummarypagehtml += `
 `;
 
 document.querySelector(".order-summary").innerHTML = orderSummarypagehtml;
+
+UpdateOrderSummary();
