@@ -93,7 +93,7 @@ document.querySelectorAll(".js-delete").forEach((deletebutton) => {
     localStorage.setItem("cart", JSON.stringify(checkoutCart));
     const productElement = deletebutton.closest(".js-product-items");
     productElement.remove();
-     UpdateOrderSummary();t
+     UpdateOrderSummary();
   });
 });
 // this is the code for the checkout quantity values.
