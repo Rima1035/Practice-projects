@@ -93,6 +93,7 @@ document.querySelectorAll(".js-delete").forEach((deletebutton) => {
     localStorage.setItem("cart", JSON.stringify(checkoutCart));
     const productElement = deletebutton.closest(".js-product-items");
     productElement.remove();
+     UpdateOrderSummary();t
   });
 });
 // this is the code for the checkout quantity values.
@@ -125,17 +126,21 @@ document
   });
 
 //console.log(checkoutCart);
-let itemstotal = 0;
+function itemstotalvalue(){
+   let itemstotal = 0;
 
 checkoutCart.forEach((orderSummary) => {
   const totalcost = orderSummary.Price * orderSummary.Quantity;
   itemstotal += totalcost;
 });
+return itemstotal
+}
+
 
 //this is the code for selecting shipping price
 function calculateShipping() {
   let Shippingtotal = 0;
-
+  
   checkoutCart.forEach((orderSummary) => {
     const productId = orderSummary.iD;
 
@@ -163,6 +168,7 @@ function calculateShipping() {
 
 //here in this function we are updating the whole cart or the order summary values from static to the dynamic
 function UpdateOrderSummary(){
+     const itemstotal =  itemstotalvalue();
      const Shippingtotal = calculateShipping();
 const totalvaluesbeforetax = itemstotal + Shippingtotal;
 const tax = 477/100;
