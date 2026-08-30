@@ -60,7 +60,7 @@ checkoutCart.forEach((cartitems) => {
                   <div class="product-items-price">$${cartitems.Price.toFixed(2)}</div>
                   <div class="product-items-values">
                     Quantity: ${cartitems.Quantity}
-                    <div class="update">Update</div>
+                    <div class="update js-update">Update</div>
                     <div class="Delete js-delete"
                     data-product-id="${cartitems.iD}">Delete</div>
                   </div>
@@ -232,3 +232,12 @@ orderSummarypagehtml += `
 document.querySelector(".order-summary").innerHTML = orderSummarypagehtml;
 
 UpdateOrderSummary();
+
+
+
+//Making the update button in the checkout page interactive 
+document.querySelectorAll('.js-update').forEach((updatebutton) => {
+  updatebutton.addEventListener('click', () => {
+      
+  });
+})
