@@ -253,6 +253,5 @@ document.querySelectorAll('.js-update').forEach((updatebutton) => {
 
              document.querySelector('.js-cartvariety').innerHTML = `Quantity: ${updatequantityvariety}`;
   });
-  
 })
 
