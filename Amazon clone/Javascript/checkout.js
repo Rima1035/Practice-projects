@@ -235,10 +235,8 @@ UpdateOrderSummary();
 
 
 let updatequantityvariety = '';
-//Making the update button in the checkout page interactive 
-document.querySelectorAll('.js-update').forEach((updatebutton) => {
-  updatebutton.addEventListener('click', () => {
-      updatequantityvariety = `<select class="js-quantity-selector">
+
+updatequantityvariety = `<select class="js-quantity-selector">
               <option selected value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -250,11 +248,18 @@ document.querySelectorAll('.js-update').forEach((updatebutton) => {
               <option value="9">9</option>
               <option value="10">10</option>
             </select>` 
-            //  document.querySelector('.js-cartvariety').innerHTML = `Quantity: ${updatequantityvariety}`;
-            const productselect = updatebutton.parentElement;
+
+//Making the update button in the checkout page interactive 
+document.querySelectorAll('.js-update').forEach((updatebutton) => {
+  updatebutton.addEventListener('click', () => {
+            setTimeout(function () {
+ const productselect = updatebutton.parentElement;
             const selectedoption = productselect.querySelector('.js-quantity-selector');
             const quantity = Number(selectedoption.value);
-            console.log(quantity);
+             console.log(quantity);
+            },5000); 
+           
+             document.querySelector('.js-cartvariety').innerHTML = `Quantity: ${updatequantityvariety}`;
   });
 
 })
