@@ -250,8 +250,12 @@ document.querySelectorAll('.js-update').forEach((updatebutton) => {
               <option value="9">9</option>
               <option value="10">10</option>
             </select>` 
-
-             document.querySelector('.js-cartvariety').innerHTML = `Quantity: ${updatequantityvariety}`;
+            //  document.querySelector('.js-cartvariety').innerHTML = `Quantity: ${updatequantityvariety}`;
+            const productselect = updatebutton.parentElement;
+            const selectedoption = productselect.querySelector('.js-quantity-selector');
+            const quantity = Number(selectedoption.value);
+            console.log(quantity);
   });
+
 })
 
