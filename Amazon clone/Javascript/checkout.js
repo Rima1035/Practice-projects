@@ -251,16 +251,16 @@ updatequantityvariety = `<select class="js-quantity-selector">
 
 //Making the update button in the checkout page interactive 
 document.querySelectorAll('.js-update').forEach((updatebutton) => {
-  updatebutton.addEventListener('click', () => {
-            setTimeout(function () {
- const productselect = updatebutton.parentElement;
-            const selectedoption = productselect.querySelector('.js-quantity-selector');
-            const quantity = Number(selectedoption.value);
-             console.log(quantity);
-            },5000); 
-           
-             document.querySelector('.js-cartvariety').innerHTML = `Quantity: ${updatequantityvariety}`;
+   let selectedbutton = updatebutton.closest(".js-product-items");
+  selectedbutton = updatebutton.addEventListener('click', () => { 
+    document.querySelector('.js-cartvariety').innerHTML = `Quantity: ${updatequantityvariety}`;
+   document.querySelector('.js-update').innerHTML = `<button class="js-save">Save</button>`
+    function makingupdatedynamic(){
+   const productselect = updatebutton.parentElement;
+              const selectedoption = productselect.querySelector('.js-quantity-selector');
+              const quantity = Number(selectedoption.value);
+              return quantity;
+}
+document.querySelector('.js-cartvariety').innerHTML = `${makingupdatedynamic()}`;
   });
-
 })
-
