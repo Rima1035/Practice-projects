@@ -234,28 +234,36 @@ document.querySelector(".order-summary").innerHTML = orderSummarypagehtml;
 UpdateOrderSummary();
 
 
-let updatequantityvariety = '';
+let updatequantityvariety = `
+  <select class="js-quantity-selector">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select>
+`;
 
-updatequantityvariety = `<select class="js-quantity-selector">
-              <option selected value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-            </select>` 
+document.querySelectorAll(".js-update").forEach((updatebutton) => {
 
-//Making the update button in the checkout page interactive 
-document.querySelectorAll('.js-update').forEach((updatebutton) => {
-     updatebutton.addEventListener('click', () => { 
-       const selectedbutton = updatebutton.closest(".js-product-items");
-    selectedbutton.querySelector('.js-cartvariety').innerHTML = `Quantity: ${updatequantityvariety}`;
-   selectedbutton.querySelector('.js-update').innerHTML = `<button class="js-save">Save</button>`
-     selectedbutton.querySelector(".js-save").addEventListener("click", () => {
+  updatebutton.addEventListener("click", () => {
+
+    const selectedbutton = updatebutton.closest(".js-product-items");
+
+    selectedbutton.querySelector(".js-cartvariety").innerHTML =
+      `Quantity: ${updatequantityvariety}`;
+
+    // Replace Update button with Save button
+    updatebutton.outerHTML = `<button class="js-save">Save</button>`;
+
+    // Find the newly created Save button
+    selectedbutton.querySelector(".js-save").addEventListener("click", () => {
+
       const selectedoption = selectedbutton.querySelector(
         ".js-quantity-selector"
       );
@@ -265,7 +273,12 @@ document.querySelectorAll('.js-update').forEach((updatebutton) => {
       selectedbutton.querySelector(".js-cartvariety").innerHTML =
         `Quantity: ${quantity}`;
 
-      selectedbutton.querySelector(".js-update").innerHTML = "Update";
+      // Replace Save with Update
+      selectedbutton.querySelector(".js-save").outerHTML =
+        `<button class="js-update">Update</button>`;
+     
     });
+ UpdateOrderSummary();
   });
-})
+
+});
